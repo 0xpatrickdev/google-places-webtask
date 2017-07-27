@@ -32,6 +32,7 @@ module.exports = function(context, cb) {
                     latitude: lat,
                     longitude: long,
                     radius: radius,
+                    request_url: request_url,
                     results: data.results || []
                 };
                 cb(null, response);
