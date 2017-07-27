@@ -7,16 +7,22 @@ const output = 'json';
 
 
 module.exports = function(context, cb) {
-    let keyword = context.body.keyword || ' ';
     let lat = context.body.latitude || '40.743';
     let long = context.body.longitude || '-73.987';
-    let openNow = context.body.openNow || 'false';
 
     let radius = context.body.radius || '100';
     let location = `${lat},${long}`;
     let key = context.secrets.GOOGLE_MAPS_KEY;
 
-    let request_url = `${googlePlacesUrl}${output}?location=${location}&radius=${radius}&keyword=${keyword}&key=${key}&opennow=${openNow}`;
+    let request_url = `${googlePlacesUrl}${output}?location=${location}&radius=${radius}&keyword=${keyword}&key=${key}`;
+    
+    if (context.body.openNow === true) {
+      request_url.concat('&opennow=true')
+    }
+    
+    if (context.body.keyword) {
+      request_url.concat(`&keyword=${context.body.keyword}`)
+    }
     
     request(request_url, { json: true })
         .then( function(data) {
