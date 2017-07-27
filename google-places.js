@@ -14,7 +14,7 @@ module.exports = function(context, cb) {
     let location = `${lat},${long}`;
     let key = context.secrets.GOOGLE_MAPS_KEY;
 
-    let request_url = `${googlePlacesUrl}${output}?location=${location}&radius=${radius}&key=${key}`;
+    const request_url = `${googlePlacesUrl}${output}?location=${location}&radius=${radius}&key=${key}`;
     
     if (context.body.openNow === true) {
       request_url.concat('&opennow=true')
