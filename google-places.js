@@ -14,15 +14,15 @@ module.exports = function(context, cb) {
     let location = `${lat},${long}`;
     let key = context.secrets.GOOGLE_MAPS_KEY;
 
-    const request_url = `${googlePlacesUrl}${output}?location=${location}&radius=${radius}&key=${key}`;
-    
     if (context.body.openNow === true) {
-      request_url.concat('&opennow=true')
-    }
+      let onUrl = '&opennow=true';
+    } else let onUrl = '';
     
     if (context.body.keyword) {
-      request_url.concat(`&keyword=${context.body.keyword}`)
-    }
+      let kwUrl = `&keyword=${context.body.keyword}`;
+    } else let kwUrl = '';
+    
+    const request_url = `${googlePlacesUrl}${output}?location=${location}&radius=${radius}${onUrl}${kwUrl}&key=${key}`;
     
     request(request_url, { json: true })
         .then( function(data) {
