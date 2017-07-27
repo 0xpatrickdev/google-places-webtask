@@ -7,7 +7,7 @@ const output = 'json';
 
 
 module.exports = function(context, cb) {
-    let keyword = context.body.keyword || '';
+    let keyword = context.body.keyword || ' ';
     let lat = context.body.latitude || '40.743';
     let long = context.body.longitude || '-73.987';
     let openNow = context.body.openNow || 'false';
