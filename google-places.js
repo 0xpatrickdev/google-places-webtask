@@ -16,11 +16,11 @@ module.exports = function(context, cb) {
 
     if (context.body.openNow === true) {
       let onUrl = '&opennow=true';
-    } else let onUrl = '';
+    } else {let onUrl = '';}
     
     if (context.body.keyword) {
       let kwUrl = `&keyword=${context.body.keyword}`;
-    } else let kwUrl = '';
+    } else {let kwUrl = '';}
     
     const request_url = `${googlePlacesUrl}${output}?location=${location}&radius=${radius}${onUrl}${kwUrl}&key=${key}`;
     
