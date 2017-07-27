@@ -12,7 +12,7 @@ module.exports = function(context, cb) {
     let lat = context.body.latitude || '40.743';
     let long = context.body.longitude || '-73.987';
 
-    let radius = context.body.radius || '100';
+    let radius = context.body.radius || '50000';
     let location = `${lat},${long}`;
     let key = context.secrets.GOOGLE_MAPS_KEY;
 
