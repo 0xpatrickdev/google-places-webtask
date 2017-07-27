@@ -17,7 +17,7 @@ module.exports = function(context, cb) {
     let key = context.secrets.GOOGLE_MAPS_KEY;
 
     
-    const request_url = `${googlePlacesUrl}${output}?location=${location}&radius=${radius}&opennow${openNow}&type=${keyword}&key=${key}`;
+    const request_url = `${googlePlacesUrl}${output}?location=${location}&radius=${radius}&opennow${openNow}&keyword=${keyword}&key=${key}`;
     
     request(request_url, { json: true })
         .then( function(data) {
